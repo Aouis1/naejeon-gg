@@ -70,10 +70,12 @@
   --color-line: rgba(255, 255, 255, 0.25);
   --color-riot: #D13639;
   --color-box: rgba(255, 255, 255, 0.1);
+  --color-win: #5383E8;
+  --color-defeat: #E84057;
 }
 
 html, body {
-  overscroll-behavior: none;
+  overscroll-behavior-y: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -86,6 +88,7 @@ html, body {
   user-drag: none;
   color: white;
   font-family: 'Pretendard', sans-serif;
+  background-color: var(--color-bg);
 }
 
 img {

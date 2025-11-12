@@ -1,6 +1,7 @@
 <template>
   <header class="w-full flex items-start gap-4">
-    <div class="flex-1 border-b-2 border-line pb-2 pt-4 flex justify-end px-4">
+    <div class="flex-1 border-b-2 border-line pb-2 pt-4 flex justify-end px-4 gap-8">
+      <router-link to="/" class="font-semibold text-lg">홈</router-link>
       <router-link to="/history" class="font-semibold text-lg"
         >내전 전적</router-link
       >
