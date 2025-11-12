@@ -2,7 +2,7 @@
   <div class="flex flex-col lg:flex-row w-full h-screen">
     <main class="flex-1 px-3 md:px-6 flex flex-col overflow-hidden">
       <Header />
-      <div class="w-full flex-1 overflow-y-scroll py-6 md:py-10">
+      <div class="w-full flex-1 overflow-y-scroll scrollbar-hide pb-6 md:pb-10 lg:px-6 mt-10">
         <RouterView />
       </div>
     </main>

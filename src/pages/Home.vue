@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col items-start lg:px-6 gap-20">
+  <div class="w-full flex flex-col items-start gap-20">
     <div class="w-full flex flex-col gap-2">
       <div class="w-full max-w-240 flex items-end justify-between">
         <h1 class="text-xl font-semibold">이번주 매치 일정</h1>
@@ -86,7 +86,9 @@
         <MatchItem
           v-for="match in matchHistory"
           :key="match.id"
-          v-bind="match" />
+          v-bind="match" 
+          @click="handleDetailClick(match.id)"
+        />
       </div>
     </div>
   </div>
@@ -95,6 +97,7 @@
 import { ref, computed } from "vue";
 import MatchItem from "../components/MatchItem.vue";
 import { ChevronRight } from "lucide-vue-next";
+import { router } from "../router";
 
 const today = ref(new Date());
 
@@ -134,6 +137,14 @@ const weekDays = computed(() => {
 
   return days;
 });
+
+const handleDetailClick = (matchId: number | null) => {
+  if (matchId === null) {
+    router.push({ path: `/history` });
+  } else {
+    router.push({ path: `/history`, query: { id: matchId } });
+  }
+};
 
 const matchHistory = ref([
   {
