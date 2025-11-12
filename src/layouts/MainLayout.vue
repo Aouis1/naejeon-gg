@@ -1,8 +1,10 @@
 <template>
-  <div class="flex w-full h-screen">
-    <main class="flex-1 px-6 flex flex-col gap-10 pb-20 overflow-y-scroll">
+  <div class="flex flex-col lg:flex-row w-full h-screen">
+    <main class="flex-1 px-3 md:px-6 flex flex-col overflow-hidden">
       <Header />
-      <RouterView />
+      <div class="w-full flex-1 overflow-y-scroll py-6 md:py-10">
+        <RouterView />
+      </div>
     </main>
     <Sidebar />
   </div>

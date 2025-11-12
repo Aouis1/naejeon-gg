@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-col items-start px-6 gap-20">
-    <div class="w-full max-w-280 flex flex-col gap-2">
-      <div class="w-full flex items-end justify-between">
+    <div class="w-full flex flex-col gap-2">
+      <div class="w-full max-w-240 flex items-end justify-between">
         <h1 class="text-xl font-semibold">이번주 매치 일정</h1>
         <router-link
           to="/schedule"
@@ -10,75 +10,83 @@
           <ChevronRight :size="20" />
         </router-link>
       </div>
-      <div class="rounded-xl overflow-hidden border border-line">
-        <table class="w-full">
-          <thead>
-            <tr>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                일
-              </th>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                월
-              </th>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                화
-              </th>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                수
-              </th>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                목
-              </th>
-              <th
-                class="p-4 text-center border-r border-b border-line bg-box w-37.5">
-                금
-              </th>
-              <th class="p-4 text-center border-b border-line bg-box w-37.5">
-                토
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                v-for="(day, index) in weekDays"
-                :key="day.date"
-                class="p-4 align-top bg-box h-[150px] w-37.5"
-                :class="[
-                  { 'bg-blue-50/5': day.isToday },
-                  index < 6 ? 'border-r border-line' : '',
-                ]">
-                <div class="text-right text-3xl font-light mb-4 opacity-60">
-                  {{ day.dateNum }}
-                </div>
-                <div v-for="event in day.events" :key="event.id" class="mb-3">
-                  <div class="text-sm mb-1">{{ event.time }}</div>
-                  <div class="font-bold" :style="{ color: event.color }">
-                    {{ event.title }}
+      <div class="w-full max-w-240 overflow-x-scroll scrollbar-hide">
+        <div class="w-240 rounded-xl overflow-hidden border border-line">
+          <table>
+            <thead>
+              <tr>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  일
+                </th>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  월
+                </th>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  화
+                </th>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  수
+                </th>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  목
+                </th>
+                <th
+                  class="p-2 text-center border-r border-b border-line bg-box w-37.5">
+                  금
+                </th>
+                <th class="p-2 text-center border-b border-line bg-box w-37.5">
+                  토
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  v-for="(day, index) in weekDays"
+                  :key="day.date"
+                  class="p-4 align-top bg-box h-[150px] w-37.5"
+                  :class="[
+                    { 'bg-blue-50/5': day.isToday },
+                    index < 6 ? 'border-r border-line' : '',
+                  ]">
+                  <div class="text-right text-3xl font-light mb-4 opacity-60">
+                    {{ day.dateNum }}
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  <div v-for="event in day.events" :key="event.id" class="mb-3">
+                    <div class="text-sm mb-1">{{ event.time }}</div>
+                    <div class="font-bold" :style="{ color: event.color }">
+                      {{ event.title }}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+
       <!-- <button class="w-full py-3 bg-box border border-line rounded-lg cursor-pointer">더보기</button> -->
     </div>
 
-    <div class="w-full max-w-280 flex flex-col gap-2">
+    <div class="w-full max-w-320 flex flex-col gap-2">
       <div class="w-full flex items-end justify-between">
         <h1 class="text-xl font-semibold">최근 전적</h1>
-        <button class="text-sm text-gray-400 transition-colors hover:text-gray-300">
+        <router-link
+          to="/history"
+          class="text-sm text-gray-400 transition-colors hover:text-gray-300">
           더보기
-        </button>
+        </router-link>
       </div>
       <div class="space-y-2">
-        <MatchItem v-for="match in matchHistory" :key="match.id" v-bind="match" />
+        <MatchItem
+          v-for="match in matchHistory"
+          :key="match.id"
+          v-bind="match" />
       </div>
     </div>
   </div>
