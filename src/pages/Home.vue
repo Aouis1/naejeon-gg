@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col items-start px-6 gap-20">
+  <div class="w-full flex flex-col items-start lg:px-6 gap-20">
     <div class="w-full flex flex-col gap-2">
       <div class="w-full max-w-240 flex items-end justify-between">
         <h1 class="text-xl font-semibold">이번주 매치 일정</h1>
@@ -73,7 +73,7 @@
       <!-- <button class="w-full py-3 bg-box border border-line rounded-lg cursor-pointer">더보기</button> -->
     </div>
 
-    <div class="w-full max-w-320 flex flex-col gap-2">
+    <div class="w-full max-w-7xl flex flex-col gap-2">
       <div class="w-full flex items-end justify-between">
         <h1 class="text-xl font-semibold">최근 전적</h1>
         <router-link
