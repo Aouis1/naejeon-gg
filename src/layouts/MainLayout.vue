@@ -12,11 +12,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, provide } from "vue";
-import { RouterView } from "vue-router";
+import { ref, watch } from "vue";
+import { RouterView, useRoute } from "vue-router";
 import Sidebar from "../components/Sidebar.vue";
 import Header from "../components/Header.vue";
 
+const route = useRoute();
 const scrollContainer = ref<HTMLElement | null>(null);
-provide('scrollContainer', scrollContainer);
+
+watch(
+  () => route.fullPath,
+  () => {
+    scrollContainer.value?.scrollTo({ top: 0, behavior: "smooth" });
+  }
+);
 </script>

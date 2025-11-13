@@ -93,13 +93,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed, inject, type Ref } from "vue";
+import { ref, computed } from "vue";
 import MatchItem from "../components/MatchItem.vue";
 import { ChevronRight } from "lucide-vue-next";
 import { router } from "../router";
 
 const today = ref(new Date());
-const scrollContainer = inject<Ref<HTMLElement | null>>("scrollContainer");
 
 const mockEvents = [
   { id: 1, date: 9, time: "18:30 시작", title: "승리", color: "#6B9CFF" },
@@ -139,7 +138,6 @@ const weekDays = computed(() => {
 });
 
 const handleDetailClick = (matchId: number | null) => {
-  scrollContainer?.value?.scrollTo({ top: 0, behavior: "smooth" });
   if (matchId === null) {
     router.push({ path: `/history` });
   } else {
