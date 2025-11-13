@@ -112,3 +112,7 @@ img {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.h-screen {
+  height: 100svh;
+}

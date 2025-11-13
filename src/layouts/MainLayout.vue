@@ -7,7 +7,7 @@
         <RouterView />
       </div>
     </main>
-    <div className="pointer-events-none absolute bottom-21 w-full h-8 bg-linear-to-b from-transparent to-bg z-9999" />
+    <div className="pointer-events-none lg:hidden absolute bottom-21 w-full h-8 bg-linear-to-b from-transparent to-bg z-9999" />
     <Sidebar />
   </div>
 </template>
