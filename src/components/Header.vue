@@ -17,7 +17,7 @@
     </div>
     <router-link
       to="/matchmaker"
-      class="bg-playbutton px-8 md:px-16 py-2 md:py-6 text-lg md:text-2xl font-extrabold rounded-none hover:bg-white hover:text-playbutton cursor-pointer hexagon-button text-center"
+      class="bg-playbutton px-8 md:px-16 py-3 md:py-6 text-lg md:text-2xl font-extrabold rounded-none hover:bg-white hover:text-playbutton cursor-pointer hexagon-button text-center"
       >매치 생성하기</router-link
     >
     <div
