@@ -6,22 +6,27 @@
       <!-- 내전 날짜 입력 -->
       <div class="flex flex-col gap-2">
         <label class="text-sm font-medium text-gray-300">내전 날짜</label>
-        <input
+        <el-date-picker
           v-model="matchDate"
           type="date"
-          required
-          class="w-full px-4 py-3 text-white border rounded-lg bg-box border-line focus:outline-none focus:ring-2 focus:ring-playbutton focus:border-transparent"
+          placeholder="날짜를 선택하세요"
+          format="YYYY-MM-DD"
+          value-format="YYYY-MM-DD"
+          class="w-full"
+          style="width: 100%"
         />
       </div>
 
       <!-- 내전 시간 입력 -->
       <div class="flex flex-col gap-2">
         <label class="text-sm font-medium text-gray-300">내전 시작 시간</label>
-        <input
+        <el-time-picker
           v-model="matchTime"
-          type="time"
-          required
-          class="w-full px-4 py-3 text-white border rounded-lg bg-box border-line focus:outline-none focus:ring-2 focus:ring-playbutton focus:border-transparent"
+          placeholder="시간을 선택하세요"
+          format="HH:mm"
+          value-format="HH:mm"
+          class="w-full"
+          style="width: 100%"
         />
       </div>
 
@@ -146,8 +151,9 @@ interface User {
 
 const router = useRouter();
 
-const matchDate = ref("");
-const matchTime = ref("");
+// Element Plus의 date-picker는 문자열 형식을 사용
+const matchDate = ref<string>("");
+const matchTime = ref<string>("");
 const selectedPlayers = ref<User[]>([]);
 const allUsers = ref<User[]>([]);
 const searchQuery = ref("");
@@ -230,10 +236,14 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
+    // Element Plus의 value-format이 "YYYY-MM-DD HH:mm"이므로
+    // 날짜와 시간을 쉽게 분리할 수 있습니다
+    const matchDateTime = `${matchDate.value} ${matchTime.value}`;
+
     // 서버 추가 되면 근데 서버 된다해도 될지 모름
     // const response = await apiClient.post("/matches", {
-    //   date: matchDate.value,
-    //   time: matchTime.value,
+    //   date: matchDate,
+    //   time: matchTime,
     //   playerIds: selectedPlayers.value.map((p) => p.id),
     // });
 
@@ -259,3 +269,112 @@ onMounted(() => {
 });
 </script>
 
+<style scoped>
+/* 다크 테마 커스터마이징 */
+:deep(.dp__input_wrap) {
+  width: 100%;
+}
+
+:deep(.dp__input) {
+  width: 100%;
+  padding: 12px 16px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Pretendard", sans-serif;
+}
+
+:deep(.dp__input:focus) {
+  outline: none;
+  box-shadow: 0 0 0 2px #424260;
+  border-color: transparent;
+}
+
+:deep(.dp__menu) {
+  background-color: #2a2a35;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+:deep(.dp__calendar_header_item) {
+  color: white;
+  font-weight: 600;
+}
+
+:deep(.dp__cell_inner) {
+  color: white;
+  border-radius: 6px;
+}
+
+:deep(.dp__cell_inner:hover) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:deep(.dp__active_date) {
+  background-color: #424260 !important;
+  color: white !important;
+}
+
+:deep(.dp__range_start),
+:deep(.dp__range_end) {
+  background-color: #424260 !important;
+  color: white !important;
+}
+
+:deep(.dp__inner_nav) {
+  color: white;
+}
+
+:deep(.dp__inner_nav:hover) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:deep(.dp__month_year_wrap) {
+  color: white;
+}
+
+:deep(.dp__month_year_select) {
+  color: white;
+}
+
+:deep(.dp__arrow_top),
+:deep(.dp__arrow_bottom) {
+  border-color: white;
+}
+
+:deep(.dp__arrow_top:hover),
+:deep(.dp__arrow_bottom:hover) {
+  border-color: #424260;
+}
+
+:deep(.dp__calendar_item) {
+  color: white;
+}
+
+:deep(.dp__today) {
+  border-color: #424260;
+}
+
+:deep(.dp__overlay_cell) {
+  color: white;
+}
+
+:deep(.dp__time_input) {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+:deep(.dp__time_input:focus) {
+  outline: none;
+  box-shadow: 0 0 0 2px #424260;
+}
+
+:deep(.dp__time_col_reg) {
+  color: white;
+}
+</style>
