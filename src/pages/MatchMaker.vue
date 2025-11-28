@@ -13,7 +13,7 @@
           format="YYYY-MM-DD"
           value-format="YYYY-MM-DD"
           class="w-full"
-          style="width: 100%"
+          style="width: 100%; background-color: transparent"
         />
       </div>
 
@@ -238,7 +238,7 @@ const handleSubmit = async () => {
   try {
     // Element Plus의 value-format이 "YYYY-MM-DD HH:mm"이므로
     // 날짜와 시간을 쉽게 분리할 수 있습니다
-    const matchDateTime = `${matchDate.value} ${matchTime.value}`;
+    // const matchDateTime = `${matchDate.value} ${matchTime.value}`;
 
     // 서버 추가 되면 근데 서버 된다해도 될지 모름
     // const response = await apiClient.post("/matches", {
